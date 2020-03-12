@@ -25,9 +25,10 @@ pipelines:
                 options: "-v /tmp/shared:/tmp/shared -v /tmp/mygitrepo:/tmp/mygitrepo"
         execution:
           onExecute:
-            - cp res_example_persist_gitrepo_group_path/* /tmp/mygitrepo
             - cd res_example_persist_gitrepo_group_path
+            - pwd
             - ls
+            - cp *.* /tmp/mygitrepo
             - cd /tmp/mygitrepo
             - ls
 
