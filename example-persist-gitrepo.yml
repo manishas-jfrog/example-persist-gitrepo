@@ -2,7 +2,7 @@ resources:
   - name: example_persist_gitrepo_repo
     type: GitRepo
     configuration:
-      gitProvider: manisha_github   # replace with your integration
+      gitProvider: manishas_github   # replace with your integration
       path: manishas-jfrog/example-persist-gitrepo    # replace with your repository name
       branches:
         include: master
