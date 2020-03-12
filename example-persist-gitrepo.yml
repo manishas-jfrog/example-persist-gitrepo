@@ -29,7 +29,7 @@ pipelines:
             - pushd $res_example_persist_gitrepo_repo_resourcePath
             - pwd
             - ls
-            - cp *.* /tmp/mygitrepo
+            - cp * /tmp/mygitrepo
             - popd
             - cd /tmp/mygitrepo
             - ls
