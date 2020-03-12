@@ -25,10 +25,7 @@ pipelines:
                 options: "-v /tmp/shared:/tmp/shared -v /tmp/mygitrepo:/tmp/mygitrepo"
         execution:
           onExecute:
-            - echo $res_example_persist_gitrepo_repo_resourcePath
             - pushd $res_example_persist_gitrepo_repo_resourcePath
-            - pwd
-            - ls
             - cp * /tmp/mygitrepo
             - popd
             - cd /tmp/mygitrepo
