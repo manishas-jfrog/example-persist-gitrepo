@@ -1,0 +1,50 @@
+resources:
+  - name: example_persist_gitrepo_repo
+    type: GitRepo
+    configuration:
+      gitProvider: manisha_github   # replace with your integration
+      path: manishas-jfrog/example-persist-gitrepo    # replace with your repository name
+      branches:
+        include: master
+
+pipelines:
+  - name: pipeline_example_persist_gitrepo
+    steps:
+      - name: step_1
+        type: Bash
+        configuration:
+          inputResources:
+            - name: example_persist_gitrepo_repo
+          affinityGroup: example_persist_gitrepo_group
+          runtime:
+            type: image
+            image:
+              custom:
+                name: docker.bintray.io/jfrog/pipelines-u16node
+                tag: "10.18.0"
+                options: "-v /tmp/shared:/tmp/shared -v /tmp/mygitrepo:/tmp/mygitrepo"
+        execution:
+          onExecute:
+            - cp res_example_persist_gitrepo_group_path/* /tmp/mygitrepo
+            - cd res_example_persist_gitrepo_group_path
+            - ls
+            - cd /tmp/mygitrepo
+            - ls
+
+      - name: step_2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_1
+          affinityGroup: example_persist_gitrepo_group
+          runtime:
+            type: image
+            image:
+              custom:
+                name: docker.bintray.io/jfrog/pipelines-u16node
+                tag: "10.18.0"
+                options: "-v /tmp/shared:/tmp/shared -v /tmp/mygitrepo:/tmp/mygitrepo"
+        execution:
+          onExecute:
+            - cd /tmp/mygitrepo
+            - ls
