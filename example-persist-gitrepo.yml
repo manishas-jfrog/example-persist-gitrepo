@@ -22,7 +22,7 @@ pipelines:
               custom:
                 name: docker.bintray.io/jfrog/pipelines-u18node
                 tag: "10.18.0"
-                options: "-v /tmp/shared:/tmp/shared -v /tmp/mygitrepo:/tmp/mygitrepo"
+                options: "-v /tmp/mygitrepo:/tmp/mygitrepo"
         execution:
           onExecute:
             - pushd $res_example_persist_gitrepo_repo_resourcePath
@@ -43,7 +43,7 @@ pipelines:
               custom:
                 name: docker.bintray.io/jfrog/pipelines-u18node
                 tag: "10.18.0"
-                options: "-v /tmp/shared:/tmp/shared -v /tmp/mygitrepo:/tmp/mygitrepo"
+                options: "-v /tmp/mygitrepo:/tmp/mygitrepo"
         execution:
           onExecute:
             - cd /tmp/mygitrepo
