@@ -27,9 +27,7 @@ pipelines:
           onExecute:
             - pushd $res_example_persist_gitrepo_repo_resourcePath
             - cp * /tmp/mygitrepo
-            - popd
-            - cd /tmp/mygitrepo
-            - ls
+            - ls -al /tmp/mygitrepo
 
       - name: step_2
         type: Bash
@@ -47,4 +45,4 @@ pipelines:
         execution:
           onExecute:
             - cd /tmp/mygitrepo
-            - ls
+            - ls -al
